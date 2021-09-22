@@ -1,0 +1,4 @@
+validators/.idea/*
+validators/build/*
+validators/out/*
+validators/.gradle/*
