@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group 'org.validator-impl'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+dependencies {
+    compile 'org.junit.jupiter:junit-jupiter-api:5.3.1'
+    compile 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+}

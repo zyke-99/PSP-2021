@@ -2,6 +2,8 @@ package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import junittest.phonenumbervalidator.CountryPhoneNumberDesc;
+import junittest.phonenumbervalidator.PhoneNumberValidator;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -16,10 +18,10 @@ class PhoneNumberValidatorUnitTests
 	{
 		validator = new PhoneNumberValidator();
 		CountryPhoneNumberDesc ltuPhoneNumber = new CountryPhoneNumberDesc();
-		ltuPhoneNumber.code = "+370";
-		ltuPhoneNumber.trunkPrefix = "8";
-		ltuPhoneNumber.length = 8;
-		ltuPhoneNumber.alpha3code = "ltu";
+		ltuPhoneNumber.setCode("+370");
+		ltuPhoneNumber.setTrunkPrefix("8");
+		ltuPhoneNumber.setLength(11);
+		ltuPhoneNumber.setAlpha3code("ltu");
 		validator.addCountryDesc(ltuPhoneNumber);
 	}
 	
@@ -52,10 +54,10 @@ class PhoneNumberValidatorUnitTests
 	{
 		String number = "23456789";
 		CountryPhoneNumberDesc lvaPhoneNumber = new CountryPhoneNumberDesc();
-		lvaPhoneNumber.code = "+371";
-		lvaPhoneNumber.trunkPrefix = null;
-		lvaPhoneNumber.length = 8;
-		lvaPhoneNumber.alpha3code = "lva";
+		lvaPhoneNumber.setCode("+371");
+		lvaPhoneNumber.setTrunkPrefix(null);
+		lvaPhoneNumber.setLength(11);
+		lvaPhoneNumber.setAlpha3code("lva");
 		validator.addCountryDesc(lvaPhoneNumber);
 		
 		String result = validator.validateNumber(number, "lva");
