@@ -60,16 +60,13 @@ public class PhoneNumberValidator {
                     return false;
                 }
             }
+            count++;
         }
         return true;
     }
 
     private boolean doesPhoneNumberContainValidPrefix(String phoneNumber, CountryPhoneNumberDesc countryPhoneNumberDesc) {
-        if(phoneNumber.substring(0, countryPhoneNumberDesc.getCode().length()).equals(countryPhoneNumberDesc.getCode())) {
-            return true;
-        } else {
-            return false;
-        }
+        return (phoneNumber.substring(0, countryPhoneNumberDesc.getCode().length()).equals(countryPhoneNumberDesc.getCode()));
     }
 
     private String replaceFirstNumberIfPossible(String phoneNumber, CountryPhoneNumberDesc countryPhoneNumberDesc) {
