@@ -21,9 +21,9 @@ public class EmailValidator {
     }
 
     private boolean validateGlobalPart(String email) {
-        String globalPart = email.substring(email.lastIndexOf("@") + 1, email.lastIndexOf("."));
+        String globalPart = email.substring(email.lastIndexOf("@") + 1);
         return globalPart.length() <= GLOBAL_PART_MAX_LENGTH && !doesDomainStartOrEndWithHyphen(globalPart) &&
-                doesPartHaveAllowedChars(globalPart, GLOBAL_PART_ALLOWED_SPECIAL_CHARS) && doesEmailHaveTopLevelDomain(email);
+                doesPartHaveAllowedChars(globalPart, GLOBAL_PART_ALLOWED_SPECIAL_CHARS) && doesEmailHaveTopLevelDomain(globalPart);
     }
 
     private boolean doesEmailContainOnlyOneAtSymbol(String email) {
@@ -45,8 +45,8 @@ public class EmailValidator {
         return true;
     }
 
-    private boolean doesEmailHaveTopLevelDomain(String email) {
-        String tld = email.substring(email.lastIndexOf("."));
+    private boolean doesEmailHaveTopLevelDomain(String globalPart) {
+        String tld = globalPart.substring(globalPart.lastIndexOf("."));
         boolean onlyNumbers = true;
         for(char c: tld.toCharArray()) {
             if(Character.isLetter(c)) {
