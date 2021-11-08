@@ -3,9 +3,8 @@ package com.zyke.libraryrest.controller;
 import com.zyke.libraryrest.dto.UserRegisterDto;
 import com.zyke.libraryrest.model.User;
 import com.zyke.libraryrest.service.UserService;
+import com.zyke.libraryrest.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

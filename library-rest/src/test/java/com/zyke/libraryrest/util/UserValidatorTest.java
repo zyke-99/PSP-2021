@@ -23,7 +23,7 @@ public class UserValidatorTest {
     //String email, String phoneNumber, String phoneNumberCountry, String password
     @Test
     public void Validate_TLDNotProvided_ShouldThrowException() {
-        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail", "867777777", "LT", "Password_");
+        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail", "867777777", "LT", "Password_", "name", "surname", "address");
         assertThrows(ValidationException.class, () -> {
            userValidator.validate(userRegisterDto);
         });
@@ -31,7 +31,7 @@ public class UserValidatorTest {
 
     @Test
     public void Validate_EmailContainsIllegalSymbols_ShouldThrowException() {
-        UserRegisterDto userRegisterDto = new UserRegisterDto("mye/-mail@gmail.com", "867777777", "LT", "Password_");
+        UserRegisterDto userRegisterDto = new UserRegisterDto("mye/-mail@gmail.com", "867777777", "LT", "Password_", "name", "surname", "address");
         assertThrows(ValidationException.class, () -> {
             userValidator.validate(userRegisterDto);
         });
@@ -39,7 +39,7 @@ public class UserValidatorTest {
 
     @Test
     public void Validate_PasswordDoesNotContainSpecialCharacter_ShouldThrowException() {
-        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "867777777", "LT", "Password");
+        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "867777777", "LT", "Password", "name", "surname", "address");
         assertThrows(ValidationException.class, () -> {
             userValidator.validate(userRegisterDto);
         });
@@ -47,7 +47,7 @@ public class UserValidatorTest {
 
     @Test
     public void Validate_PasswordDoesNotContainUppercaseCharacter_ShouldThrowException() {
-        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "867777777", "LT", "password_");
+        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "867777777", "LT", "password_", "name", "surname", "address");
         assertThrows(ValidationException.class, () -> {
             userValidator.validate(userRegisterDto);
         });
@@ -55,7 +55,7 @@ public class UserValidatorTest {
 
     @Test
     public void Validate_PasswordLengthLessThanRequired_ShouldThrowException() {
-        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "867777777", "LT", "Pass_");
+        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "867777777", "LT", "Pass_", "name", "surname", "address");
         assertThrows(ValidationException.class, () -> {
             userValidator.validate(userRegisterDto);
         });
@@ -63,7 +63,7 @@ public class UserValidatorTest {
 
     @Test
     public void Validate_PhoneNumberIsNotCorrectLength_ShouldThrowException() {
-        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "86777", "LT", "Password_");
+        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "86777", "LT", "Password_", "name", "surname", "address");
         assertThrows(ValidationException.class, () -> {
             userValidator.validate(userRegisterDto);
         });
@@ -71,7 +71,7 @@ public class UserValidatorTest {
 
     @Test
     public void Validate_PhoneNumberContainsNotOnlyNumbers_ShouldThrowException() {
-        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "86777abcd", "LT", "Password_");
+        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "86777abcd", "LT", "Password_", "name", "surname", "address");
         assertThrows(ValidationException.class, () -> {
             userValidator.validate(userRegisterDto);
         });
@@ -79,7 +79,7 @@ public class UserValidatorTest {
 
     @Test
     public void Validate_ValidDataProvided_ShouldNotThrowException() {
-        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "867777777", "LT", "Password_");
+        UserRegisterDto userRegisterDto = new UserRegisterDto("myemail@gmail.com", "867777777", "LT", "Password_", "name", "surname", "address");
         assertDoesNotThrow(() -> {
             userValidator.validate(userRegisterDto);
         });
